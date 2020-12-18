@@ -2,30 +2,31 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-10">
-        <h1>CRUD PERSONAS</h1>
+        <h1>CRUD DOCENTE</h1>
 
         <hr />
         <br /><br />
         <alert :message="message" v-if="showMessage"></alert>
         <button type="button" class="btn btn-success btn-sm" v-on:click="add()">
-          Add Person
+          Add Docente
         </button>
         <br /><br />
         <table class="table table-hover">
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Nombre de Rol</th>
-              <th scope="col">Código</th>
+              <th scope="col">Usuario</th>
+              <th scope="col">Rol</th>
               <th scope="col">Estado</th>
+              <th></th>
               <th></th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(d, index) in list" :key="index">
               <td>{{ d.ID }}</td>
-              <td>{{ d.nombre }}</td>
-              <td>{{ d.descripcion }}</td>
+              <td>{{ d.usuario }}</td>
+              <td>{{ d.Rol.nombre }}</td>
               <td>{{ d.estado }}</td>
               <td>
                 <div class="btn-group" role="group">
@@ -58,7 +59,7 @@ import Alert from "./Alert.vue";
 import client from "../api";
 
 export default {
-  name: "Rol",
+  name: "Docente",
   data: function () {
     return {
       list: [],
@@ -71,14 +72,14 @@ export default {
   },
   methods: {
     edit: function (id) {
-      this.$router.push("/rol/form/" + id);
+      this.$router.push("/docentes/form/" + id);
     },
     add: function () {
-      this.$router.push("/rol/form");
+      this.$router.push("/docentes/form");
     },
     getList: function () {
       client
-        .get("/v1/rol")
+        .get("/v1/docente")
         .then((res) => {
           this.list = res.data.r;
         })
@@ -94,10 +95,10 @@ export default {
     },
     delete: function (id) {
       client
-        .delete(`/v1/rol/${id}`)
+        .delete(`/v1/docente/${id}`)
         .then(() => {
           this.getList();
-          this.message = "Rol Eliminado!";
+          this.message = "Docente Eliminado!";
           this.showMessage = true;
         })
         .catch((error) => {

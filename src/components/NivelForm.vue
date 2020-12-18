@@ -14,12 +14,8 @@
         </button>
         <br /><br />ID= {{ d.ID }}
     
-      <b-form-group label-cols="4" label-cols-lg="3" label-size="sm" label="Rol">
-        <b-form-input id="input-sm" size="sm" placeholder="Enter Rol" type="text" v-model="d.nombre" required></b-form-input>
-      </b-form-group>
-
-      <b-form-group label-cols="4" label-cols-lg="3" label-size="sm" label="Código">
-        <b-form-input id="input-sm" size="sm" placeholder="Enter Código" type="text" v-model="d.codigo" required></b-form-input>
+      <b-form-group label-cols="4" label-cols-lg="3" label-size="sm" label="Nivel">
+        <b-form-input id="input-sm" size="sm" placeholder="Enter Nivel" type="text" v-model="d.nombre" required></b-form-input>
       </b-form-group>
 
       <b-form-group label-cols="4" label-cols-lg="3" label-size="sm" label="Estado">
@@ -41,7 +37,7 @@ import Alert from "./Alert.vue";
 import client from "../api";
 
 export default {
-  name: "RolForm",
+  name: "NivelForm",
   data: function () {
     return {
       message: "",
@@ -49,7 +45,6 @@ export default {
       d: {
         ID: "",
         nombre: "",
-        descripcion: "",
         estado: "",
       },
 
@@ -61,18 +56,18 @@ export default {
   methods: {
     
     back: function () {
-      this.$router.push("/rol");
+      this.$router.push("/niveles");
     },
 
     create: function (payload) {
       client
-        .post("/v1/rol", payload)
+        .post("/v1/nivel", payload)
         .then(() => {
           console.log(payload);
 
-          this.message = "Rol Agregado!";
+          this.message = "Nivel Agragado!";
           this.showMessage = true;
-          this.$router.push("/rol?msg="+this.message);
+          this.$router.push("/niveles?msg="+this.message);
         })
         .catch((error) => {
           this.message = error;
@@ -83,7 +78,6 @@ export default {
     initForm: function () {
       //this.d.ID = '';
       this.d.nombre = "";
-      this.d.descripcion = "";
       this.d.estado = "";
     },
     onSubmit: function (evt) {
@@ -91,7 +85,6 @@ export default {
 
       const payload = {
         nombre: this.d.nombre,
-        descripcion: this.d.descripcion,
         estado: this.d.estado,
       };
       if (this.d.ID > 0) {
@@ -109,7 +102,7 @@ export default {
 
     getById: function (id) {
       client
-        .get(`/v1/rol/${id}`)
+        .get(`/v1/nivel/${id}`)
         .then((res) => {
           this.d = res.data;
         })
@@ -122,13 +115,13 @@ export default {
 
     update: function (payload, id) {
       client
-        .put(`/v1/rol/${id}`, payload)
+        .put(`/v1/nivel/${id}`, payload)
         .then(() => {
           console.log(payload);
 
-          this.message = "Rol Actualizado!";
+          this.message = "Person Actualizado!";
           this.showMessage = true;
-          this.$router.push("/rol?msg="+this.message);
+          this.$router.push("/niveles?msg="+this.message);
         })
         .catch((error) => {
           this.message = error;

@@ -18,7 +18,6 @@
               <th scope="col">Nombre</th>
               <th scope="col">Paterno</th>
               <th scope="col">Materno</th>
-              <th scope="col">Usuario</th>
               <th scope="col">Email</th>
               <th scope="col">Edad</th>
               <th scope="col">Fecha Nacimiento</th>

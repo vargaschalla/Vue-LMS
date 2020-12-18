@@ -12,6 +12,12 @@ import Sesion from './components/Sesion.vue';
 import SesionForm from './components/SesionForm.vue';
 import Tarea from './components/Tarea.vue';
 import TareaForm from './components/TareaForm.vue';
+import Nivel from './components/Nivel.vue';
+import NivelForm from './components/NivelForm.vue';
+import Alumno from './components/Alumno.vue';
+import AlumnoForm from './components/AlumnoForm.vue';
+import Docente from './components/Docente.vue';
+import DocenteForm from './components/DocenteForm.vue';
 
 Vue.use(Router);
 
@@ -92,6 +98,54 @@ const router = new Router({
       path: '/tareas/form/:id',
       name: 'TareaForme',
       component: TareaForm
+    },
+    {
+      path: '/niveles',
+      name: 'Nivel',
+      component: Nivel,
+    },
+    {
+      path: '/niveles/form',
+      name: 'NivelForm',
+      component: NivelForm,
+
+    },
+    {
+      path: '/niveles/form/:id',
+      name: 'NivelForme',
+      component: NivelForm
+    },
+    {
+      path: '/alumnos',
+      name: 'Alumno',
+      component: Alumno,
+    },
+    {
+      path: '/alumnos/form',
+      name: 'AlumnoForm',
+      component: AlumnoForm,
+
+    },
+    {
+      path: '/alumnos/form/:id',
+      name: 'AlumnoForme',
+      component: AlumnoForm
+    },
+    {
+      path: '/docentes',
+      name: 'Docente',
+      component: Docente,
+    },
+    {
+      path: '/docentes/form',
+      name: 'DocenteForm',
+      component: DocenteForm,
+
+    },
+    {
+      path: '/docentes/form/:id',
+      name: 'DocenteForme',
+      component: DocenteForm
     },
     {
       path: '/login',
